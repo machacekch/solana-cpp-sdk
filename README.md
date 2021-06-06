@@ -4,6 +4,11 @@ A header-only C++ SDK for on-chain programs (a.k.a. smart contracts) on the [Sol
 # Running the examples
 Install the [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) or update your existing installation by running `solana-install init "v1.7.0"`. Version 1.7.0 or later is required to use all the SDK's features.
 
+Run `make` in this repository's root directory and follow the instructions to deploy the examples, e.g.:
+```bash
+$ solana program deploy dist/account_logger_example.so
+```
+
 # Highlights
 These are some benefits of using the C++ SDK over writing plain C.
 
