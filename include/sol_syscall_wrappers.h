@@ -14,7 +14,7 @@
  * invoke_signed does the cross-program invocation.
  *
  * Example:
- * invoke_signed(create_account_instruction, {system_program, payer, created_account}, {
+ * invoke_signed(create_account_instruction, account_infos, {
  *     {{"bank", SignerSeed(payer_pda.bump_seed)}},  // sign for payment
  *     {{"1234", SignerSeed(created_pda.bump_seed)}} // sign for the new account
  * });
@@ -38,7 +38,7 @@ FoundPDA find_pda(const Pubkey& program_id, const Ts&... seeds) {
     SignerSeed seed_array[sizeof...(Ts)] = { seeds... };
     FoundPDA result;
     if (syscall::sol_try_find_program_address(seed_array, sizeof...(Ts), &program_id, &result.pubkey, &result.bump_seed) != SUCCESS) {
-        log("ERROR: Could not create a program-derived address.");
+        log("ERROR: Could not create a program derived address.");
         sol_panic();
     }
     return result;

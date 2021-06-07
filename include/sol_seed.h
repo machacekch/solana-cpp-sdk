@@ -14,7 +14,7 @@
  * To sign for multiple accounts, multiple SignerSeeds can be passed in a cross-program invocation. (see sol_syscall_wrappers.h)
  *
  * Example:
- * invoke_signed(create_account_instruction, {system_program, payer, created_account}, {
+ * invoke_signed(create_account_instruction, account_infos, {
  *     {{"bank", SignerSeed(payer_pda.bump_seed)}},  // sign for payment
  *     {{"1234", SignerSeed(created_pda.bump_seed)}} // sign for the new account
  * });
