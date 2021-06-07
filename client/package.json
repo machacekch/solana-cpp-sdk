@@ -1,0 +1,15 @@
+{
+  "name": "solana_cpp_sdk_client",
+  "version": "0.2.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "@solana/web3.js": "^1.10.0"
+  },
+  "scripts": {
+    "account_logger_example": "node src/account_logger_example.js",
+    "user_registry_example": "node src/user_registry_example.js"
+  },
+  "author": "",
+  "license": "Apache-2.0"
+}
