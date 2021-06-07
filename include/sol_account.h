@@ -84,7 +84,7 @@ public:
 };
 
 struct AccountMeta {
-    Pubkey* pubkey;
+    const Pubkey* pubkey;
     bool is_writable;
     bool is_signer;
 };

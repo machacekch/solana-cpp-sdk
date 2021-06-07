@@ -66,4 +66,12 @@ uint64_t invoke_signed(
     return syscall::sol_invoke_signed_c(&instruction, account_info_array, ACCOUNTS, signer_seeds_array, SIGNERS);
 }
 
+template<uint64_t ACCOUNTS>
+uint64_t invoke(
+  const Instruction& instruction,
+  const AccountInfo (&account_info_array)[ACCOUNTS]
+) {
+    return syscall::sol_invoke_signed_c(&instruction, account_info_array, ACCOUNTS, nullptr, 0);
+}
+
 } // namespace sol
