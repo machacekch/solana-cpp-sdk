@@ -2,11 +2,16 @@
 A header-only C++ SDK for on-chain programs (a.k.a. smart contracts) on the [Solana](https://solana.com/) blockchain.
 
 # Running the examples
-Install the [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) or update your existing installation by running `solana-install init "v1.7.0"`. Version 1.7.0 or later is required to use all the SDK's features.
+Install the [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) version 1.7.0 or higher. To update your existing installation run `solana-install init "v1.7.0"`. Be sure to switch to devnet for experimenting with the SDK: `solana config set -ud`.
 
 Run `make` in this repository's root directory and follow the instructions to deploy the examples, e.g.:
 ```bash
 $ solana program deploy dist/account_logger_example.so
+```
+Note the `Program Id` you're given when deploying a program; you'll need it for sending transactions. To that end, there are some simple Node.js scripts in the `client` directory, from which to call `npm install` to download the dependencies. Client scripts take the `Program Id` as the first argument, as well as additional arguments, depending on the script. For example:
+```
+$ npm run account_logger_example HX9t2pYjL1HZ9da1xTpWCgwaJRUqSCvgHs2RaA4stwsq
+$ npm run user_registry_example 867RPtW9GzwCg3xWs9PjJaSTT7cR7LqGq8g79jKEh49W myname
 ```
 
 # Highlights
@@ -52,7 +57,7 @@ log("pubkey:", pda.pubkey, "bump seed:", pda.bump_seed);
 
 For a cross-program invocation, arrays of seeds are passed to the `invoke_signed` function as follows:
 ```c++
-invoke_signed(create_account_instruction, {system_program, payer, created_account}, {
+invoke_signed(create_account_instruction, account_infos, {
     {{"bank", SignerSeed(payer_pda.bump_seed)}},  // sign for payment
     {{"1234", SignerSeed(created_pda.bump_seed)}} // sign for the new account
 });
