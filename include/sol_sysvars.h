@@ -21,11 +21,11 @@
 namespace sol::sysvar {
 
 class Clock {
-    uint64_t _slot;                    // the current network/bank Slot
+    Slot _slot;                        // the current network/bank Slot
     int64_t _epoch_start_timestamp;    // the timestamp of the first Slot in this Epoch
-    uint64_t _epoch;                   // the bank Epoch
-    uint64_t _leader_schedule_epoch;   // the future Epoch for which the leader schedule has most recently been calculated
-    int64_t _unix_timestamp;           // originally computed from genesis creation time and network time in slots (drifty); corrected using validator timestamp oracle as of timestamp_correction and timestamp_bounding features
+    Epoch _epoch;                      // the bank Epoch
+    Epoch _leader_schedule_epoch;      // the future Epoch for which the leader schedule has most recently been calculated
+    int64_t _unix_timestamp;           // roughly the seconds since 00:00:00 UTC on 1 January 1970
 
 public:
     static constexpr Pubkey pubkey() {
@@ -45,7 +45,7 @@ public:
         memcpy(this, account.data(), sizeof(*this));
     }
 
-    uint64_t slot() const {
+    Slot slot() const {
         return _slot;
     }
 
@@ -53,11 +53,11 @@ public:
         return _epoch_start_timestamp;
     }
 
-    uint64_t epoch() const {
+    Epoch epoch() const {
         return _epoch;
     }
 
-    uint64_t leader_schedule_epoch() const {
+    Epoch leader_schedule_epoch() const {
         return _leader_schedule_epoch;
     }
 
