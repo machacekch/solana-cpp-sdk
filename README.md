@@ -73,4 +73,4 @@ log("Logging account", account_info, "at time", sysvar::Clock());
 With few exceptions such as the `sol_panic` macro, names are under the `sol::` namespace and don't pollute the global namespace.
 
 # Disclaimer
-This SDK is not officially supported or endorsed by the Solana project. It should be considered alpha quality software at this point. Interfaces and implementation are subject to change.
+This SDK is not officially supported by the Solana project. It should be considered alpha quality software at this point. Interfaces and implementation are subject to change.
