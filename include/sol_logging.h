@@ -36,7 +36,7 @@ void log_array(const T* a, const uint64_t ARRAY_SIZE) {
     }
 }
 
-void log(uint64_t number) {
+inline void log(uint64_t number) {
     syscall::sol_log_64_(0, 0, 0, 0, number);
 }
 

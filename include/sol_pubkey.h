@@ -26,7 +26,7 @@ public:
     }
 };
 
-bool operator==(const Pubkey& left, const Pubkey& right) {
+inline bool operator==(const Pubkey& left, const Pubkey& right) {
     for (int i = 0; i != sizeof(Pubkey::bytes); ++i) {
         if (left.bytes[i] != right.bytes[i]) {
             return false;
@@ -35,11 +35,11 @@ bool operator==(const Pubkey& left, const Pubkey& right) {
     return true;
 }
 
-bool operator!=(const Pubkey& left, const Pubkey& right) {
+inline bool operator!=(const Pubkey& left, const Pubkey& right) {
     return !(left == right);
 }
 
-bool operator<(const Pubkey& left, const Pubkey& right) {
+inline bool operator<(const Pubkey& left, const Pubkey& right) {
     for (int i = 0; i != sizeof(Pubkey::bytes); ++i) {
         if (left.bytes[i] != right.bytes[i]) {
             return left.bytes[i] < right.bytes[i];
@@ -48,7 +48,7 @@ bool operator<(const Pubkey& left, const Pubkey& right) {
     return false;
 }
 
-void log(const Pubkey& pubkey) {
+inline void log(const Pubkey& pubkey) {
     syscall::sol_log_pubkey(&pubkey);
 }
 

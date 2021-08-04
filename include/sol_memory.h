@@ -18,7 +18,7 @@ constexpr T* aligned(const T* ptr) {
     return reinterpret_cast<T*>(aligned<BYTES>(reinterpret_cast<uint64_t>(ptr)));
 }
 
-void memcpy(void* dst, const void* src, int len) {
+inline void memcpy(void* dst, const void* src, int len) {
     for (int i = 0; i < len; ++i) {
         *((uint8_t*)dst + i) = *((const uint8_t*)src + i);
     }

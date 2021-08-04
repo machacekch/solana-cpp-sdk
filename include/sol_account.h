@@ -89,7 +89,7 @@ struct AccountMeta {
     bool is_signer;
 };
 
-void log(const AccountInfo& account) {
+inline void log(const AccountInfo& account) {
     log(account.pubkey());
     log("  - is_signer, is_writable, executable, lamports, rent_epoch");
     syscall::sol_log_64_(account.is_signer(), account.is_writable(), account.executable(), account.lamports(), account.rent_epoch());

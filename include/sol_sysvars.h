@@ -156,7 +156,7 @@ public:
     }
 };
 
-void log(const Clock& clock) {
+inline void log(const Clock& clock) {
     syscall::sol_log_64_(
         clock.slot(),
         clock.epoch_start_timestamp(),
@@ -166,7 +166,7 @@ void log(const Clock& clock) {
     );
 }
 
-void log(const EpochSchedule& epoch_schedule) {
+inline void log(const EpochSchedule& epoch_schedule) {
     syscall::sol_log_64_(
         epoch_schedule.slots_per_epoch(),
         epoch_schedule.leader_schedule_slot_offset(),
@@ -176,7 +176,7 @@ void log(const EpochSchedule& epoch_schedule) {
     );
 }
 
-void log(const Rent& rent) {
+inline void log(const Rent& rent) {
     double exemption_threshold = rent.exemption_threshold(); // reinterpreted as uint64_t for logging
     syscall::sol_log_64_(
         rent.lamports_per_byte_year(),

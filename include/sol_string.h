@@ -8,7 +8,7 @@
 
 namespace sol {
 
-uint64_t strlen(const char* string) {
+inline uint64_t strlen(const char* string) {
     uint64_t len = 0;
     while (*string) {
         ++len;
@@ -17,7 +17,7 @@ uint64_t strlen(const char* string) {
     return len;
 }
 
-void log(const char* string) {
+inline void log(const char* string) {
     syscall::sol_log_(string, strlen(string));
 }
 
