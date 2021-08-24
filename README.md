@@ -8,7 +8,7 @@ Run `make` in this repository's root directory and follow the instructions to de
 ```bash
 $ solana program deploy dist/account_logger_example.so
 ```
-Note the `Program Id` you're given when deploying a program; you'll need it for sending transactions. To that end, there are some simple Node.js scripts in the `client` directory, from which to call `npm install` to download the dependencies. Client scripts take the `Program Id` as the first argument, as well as additional arguments, depending on the script. For example:
+Note the `Program Id` you're given when deploying a program; you'll need it for sending transactions. To that end, there are some simple Node.js scripts in the `client` directory. Change to the `client` directory and run `npm install` to download the dependencies. Client scripts take the `Program Id` as the first argument, as well as additional arguments, depending on the script. For example:
 ```
 $ npm run account_logger_example HX9t2pYjL1HZ9da1xTpWCgwaJRUqSCvgHs2RaA4stwsq
 $ npm run user_registry_example 867RPtW9GzwCg3xWs9PjJaSTT7cR7LqGq8g79jKEh49W myname
